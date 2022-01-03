@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import './Header.css'
 
 export default function Header() {
@@ -6,7 +7,7 @@ export default function Header() {
         <>
             <nav className="navbar navbar-expand-lg navbar-red navbar-dark">
                 <div className="wrapper"> </div>
-                <div className="container-fluid all-show"> <a className="navbar-brand" >VisualDSA <i className="fas fa-code-branch"></i></a> <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"> <span className="navbar-toggler-icon"></span> </button>
+                <div className="container-fluid all-show"> <Link className="navbar-brand" to='/'>VisualDSA <i className="fas fa-code-branch"></i></Link> <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"> <span className="navbar-toggler-icon"></span> </button>
                     <div className="collapse navbar-collapse" id="navbarSupportedContent">
                         <ul className="navbar-nav mr-auto mb-2 mb-lg-0">
                             <li className="nav-item"> <a className="nav-link active" aria-current="page" >About us</a> </li>
