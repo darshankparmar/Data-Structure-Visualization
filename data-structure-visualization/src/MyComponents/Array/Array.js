@@ -28,6 +28,7 @@ export default function Array() {
             setIsSetDataType(false);
     }, [arraySize, dataType])
 
+    // initialize canvas
     const showCanvas = () => {
         const width = 1800;
         const height = 330;
@@ -56,6 +57,7 @@ export default function Array() {
             .attr("fill", "#f00");
     }
 
+    // insert value in array and create rect element
     var [i, setI] = useState(1);
     var [k, setK] = useState(1);
     var [insertValue, setInsertValue] = useState(null);
@@ -69,9 +71,8 @@ export default function Array() {
         if(i === 1)
             showCanvas();
 
-        if(remainingArraySize === 0) {
+        if(remainingArraySize === 0)
             return;
-        }
 
         const width = 50+(5*(insertValue.length-1));
         const height = 50;
@@ -88,15 +89,19 @@ export default function Array() {
             .attr("width", width)
             .attr("height", height)
             .attr("rx", 15)
+            .transition()
             .style("stroke", "red")
-            .style("fill", "white");
+            .style("fill", "white")
+            .delay(500).duration(1000);
 
         g.append("text")
             .attr("class", "array-index")
             .attr("dx", width/2 - 5)
             .attr("dy", -5)
+            .transition()
             .style("stroke", "red")
-            .text(i-1);
+            .text(i-1)
+            .delay(500).duration(1000);
                 
         g.append("text")
             .attr("class", "array-value")
@@ -108,10 +113,12 @@ export default function Array() {
             .attr("class", "array-memory-location")
             .attr("dx", width/2 - 15)
             .attr("dy", 65)
+            .transition()
             .style("stroke", "white")
-            .text(i+199);
+            .text(i+199)
+            .delay(500).duration(1000);
 
-        if(remainingArraySize !== 1) { 
+        if((remainingArraySize !== 1) && (arraySize !== i)) { 
             g.append("line")
                 .attr("x1", width)
                 .attr("x2", width+10)
@@ -127,6 +134,10 @@ export default function Array() {
         setPrevInsertedValue(insertValue); 
     }
 
+    // update array value at given index
+
+
+    // clear svg element
     const clearSvg = () => {
         d3.selectAll("svg").remove();
         setI(1);
@@ -173,7 +184,7 @@ export default function Array() {
                         <input className="operation-index-value" type="number" placeholder=" enter index" />
                         <input className="operation-value" type="number" placeholder=" enter value" />
                         <i className="fas fa-edit"></i> |
-                        <i className="fas fa-redo" onClick={() => { clearSvg(); setRemainingArraySize(arraySize);}}></i>
+                        <i className="fas fa-redo" onClick={() => { clearSvg(); setRemainingArraySize(arraySize); setInsertValue(null)}}></i>
                     </div></>
                 :<></>}
             </div>
