@@ -1,34 +1,19 @@
-.array, .initialize-array-size, .initialize-array-data-type, .operation {
+.array {
     justify-content: center;
     display: grid;
-    padding: 11px;
-    text-align: center;
 }
 
-.col-4 {
-    width: 49.333333% !important;
-}
-
-input.enter-array-size, select.select-data-type {
-    width: 209px;
-    height: 30px;
-    border: none;
-    border-bottom: 0.1rem solid #0000006b;
-    border-radius: 0.3rem;
-}
-
-.showBox {
+.showBox, .show-array-details {
     width: 1200px;
-    height: 350px;
+    height: 500px;
     margin-bottom: 50px;
     overflow: scroll;
     border-top: 1px outset red;
     border-left: 1px outset red;
-    margin: 25px;
 }
 
-.insert-operation {
-    margin: 30px;
+.operation1 {
+    margin: 70px;
     width: 200px;
     border-radius: 30px;
     height: 50px;
@@ -43,36 +28,12 @@ input.enter-array-size, select.select-data-type {
 .item {
     cursor: pointer;
 }
-input.insert-value {
+input.operation-value {
     border: none;
     border-bottom: 0.1rem solid #0000006b;
     border-radius: 0.3rem;
     outline: 0;
-    width: 100px !important;
-}
-i.fas.fa-plus {
-    width: 38px;
-    height: 38px;
-    background: rgb(246, 54, 54);
-    color: white;
-    border-radius: 50%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    cursor: pointer;
-    box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.212);
-}
-i.fas.fa-circle {
-    top: 2px;
-    position: absolute;
-    left: 163px;
-}
-span#arraySize {
-    left: 3px;
-    top: 3px;
-    position: absolute;
-    font-size: x-small;
-    color: black;
+    width: 130px !important;
 }
 i.fas.fa-arrow-alt-circle-right {
     font-size: 35px;
@@ -96,7 +57,7 @@ i.fas.fa-arrow-alt-circle-right {
     transform: scale(0);
     transition: transform 0.1s cubic-bezier(0.23, -0.47, 0.58, -0.63);
 }
-.nav-items:hover, i.fas.fa-plus:hover {
+.nav-items:hover {
     transform: scale(1.1);
     transition-timing-function: 0.1s;
 }
@@ -137,13 +98,4 @@ input::-webkit-inner-spin-button {
 /* For firefox : */
 input[type=number]{
     -moz-appearance: textfield;
-}
-
-
-[type="checkbox"]:checked,
-[type="checkbox"]:not(:checked){
-  position: absolute;
-  left: -9999px;
-  opacity: 0;
-  pointer-events: none;
 }
