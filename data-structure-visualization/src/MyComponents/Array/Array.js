@@ -5,26 +5,18 @@ import * as d3 from 'd3';
 
 export default function Array() {
 
-    const showMenu = () => {
-        for (let i = 0; i <= 3; i++) {
-            document
-              .getElementsByClassName("nav-items")
-              [i].classList.toggle("show-menu");
-        }
-    }
-
     const canvas = useRef(null);
-
     const dataTypeList = ["Select Array Data Type", "int", "char", "long" , "double", "long double"];
 
     var [dataType, setDataType] = useState(0);
     var [arraySize, setArraySize] = useState(0);
-    var [remainingArraySize, setRemainingArraySize] = useState(0);
+    var [remainingArraySize, setRemainingArraySize] = useState(-1);
 
     var [isSetArraySize, setIsSetArraySize] = useState(0);
     var [isSetDataType, setIsSetDataType] = useState(0);
 
     useEffect(() => {
+        document.title = "VisualDSA ~ Array"; 
         if(arraySize>0)
             setIsSetArraySize(true);
         else
@@ -34,7 +26,7 @@ export default function Array() {
             setIsSetDataType(true);
         else
             setIsSetDataType(false);
-    })
+    }, [arraySize, dataType])
 
     const showCanvas = () => {
         const width = 1800;
@@ -64,15 +56,10 @@ export default function Array() {
             .attr("fill", "#f00");
     }
 
-    const clearSvg = () => {
-        d3.select("svg").remove();
-        showCanvas();
-        i = 0;
-    }
-
     var [i, setI] = useState(1);
-    var [insertValue, setInsertValue] = useState(0);
-    // var insertValue;
+    var [k, setK] = useState(1);
+    var [insertValue, setInsertValue] = useState(null);
+    var [prevInsertedValue, setPrevInsertedValue] = useState(parseInt("1"));
 
     const createRect = () => {
         if(insertValue == null || insertValue === "") {
@@ -81,18 +68,21 @@ export default function Array() {
         }
         if(i === 1)
             showCanvas();
-        
+
         if(remainingArraySize === 0) {
             return;
         }
-        const width = 50;
+
+        const width = 50+(5*(insertValue.length-1));
         const height = 50;
-        const x = 70;
+        var x = ((70*i) + (5*(prevInsertedValue.length-1)) + k);
+        if(i === 1)
+            x = 70;
         const y = 100;
     
         var g = d3.select("svg")
             .append("g")
-            .attr("transform", `translate(${i*x} , ${y})`);
+            .attr("transform", `translate(${x} , ${y})`);
 
         g.append("rect")
             .attr("width", width)
@@ -103,7 +93,7 @@ export default function Array() {
 
         g.append("text")
             .attr("class", "array-index")
-            .attr("dx", 20)
+            .attr("dx", width/2 - 5)
             .attr("dy", -5)
             .style("stroke", "red")
             .text(i-1);
@@ -116,7 +106,7 @@ export default function Array() {
 
         g.append("text")
             .attr("class", "array-memory-location")
-            .attr("dx", 10)
+            .attr("dx", width/2 - 15)
             .attr("dy", 65)
             .style("stroke", "white")
             .text(i+199);
@@ -132,72 +122,70 @@ export default function Array() {
         }
 
         setI(i+1);
+        setK(x-(70*i));
         setRemainingArraySize(remainingArraySize-1);
+        setPrevInsertedValue(insertValue); 
+    }
+
+    const clearSvg = () => {
+        d3.selectAll("svg").remove();
+        setI(1);
     }
 
     return (
         <div className="array">
 
+            <hr />
+            <h1 className="display-4 font-weight-bold">Array</h1>
+            <hr />
+
             <div className="initialize-array row"> 
-            <div className="initialize-array-data-type col-4">
-                <label>Array Data Type</label>
-                <select className="select-data-type" onChange={(e) => {setDataType(e.target.value); clearSvg(); setI(1); }} >
-                    {dataTypeList.map((x,y) => <option value={y} key={y}>{x}</option>)}
-                </select>
-            </div>
+                <div className="initialize-array-data-type col-4">
+                    <label>Array Data Type</label>
+                    <select className="select-data-type" onChange={(e) => {setDataType(e.target.value); clearSvg(); setRemainingArraySize(arraySize); }} >
+                        {dataTypeList.map((x,y) => <option value={y} key={y}>{x}</option>)}
+                    </select>
+                </div>
         
-            <div className="initialize-array-size col-4">
-                <label>Array Size</label>
-                <input className="enter-array-size" type="number" min="1" placeholder="Enter Array size" onChange={(e) => {setArraySize(e.target.value); setRemainingArraySize(e.target.value); clearSvg(); setI(1);} } />
-            </div>
+                <div className="initialize-array-size col-4">
+                    <label>Array Size</label>
+                    <input className="enter-array-size" type="number" min="1" placeholder=" Enter Array size" onChange={(e) => {setArraySize(e.target.value); setRemainingArraySize(e.target.value); clearSvg();} } />
+                </div>
             </div>
 
-            {(remainingArraySize>0 && isSetDataType) ?
-                <div className="operation"> 
+            <div className="operation"> 
+                {(remainingArraySize>0 && isSetDataType && isSetArraySize) ?
+                    <><label>Insert Value one by one</label>
                     <div className="insert-operation">
-                        <input className="insert-value" type="number" placeholder="Enter value" onChange={(e) => setInsertValue(e.target.value)} />
+                        <input className="insert-value" type="number" placeholder=" Enter value" onChange={(e) => setInsertValue(e.target.value)} />
                         <div className="insert-button" onClick={createRect}>
                             <i className="fas fa-plus"></i>
                             <i className="fas fa-circle">
                                 <span id="arraySize">{remainingArraySize}</span>
                             </i>
-                        </div>
-                    </div>
-                </div>
-            :
-                <></>
-            }
+                        </div> |
+                        <i className="fas fa-redo" onClick={() => { clearSvg(); setRemainingArraySize(arraySize);}}></i>
+                    </div></>
+                :<></>}
+                {(remainingArraySize === 0 && isSetDataType && isSetArraySize) ?
+                    <><label>Update Value by Index</label>
+                    <div className="other-operation">
+                        <input className="operation-index-value" type="number" placeholder=" enter index" />
+                        <input className="operation-value" type="number" placeholder=" enter value" />
+                        <i className="fas fa-edit"></i> |
+                        <i className="fas fa-redo" onClick={() => { clearSvg(); setRemainingArraySize(arraySize);}}></i>
+                    </div></>
+                :<></>}
+            </div>
 
-        {(isSetArraySize && isSetDataType) ?
             <>
-                {/* <div className="operation">
-                    <input className="operation-value" type="number" id="insertValue" name="insertValue" placeholder="insert value" value={insertValue} onChange={(e) => insertValue = e.target.value} />
-                    <div className="item menu" onClick={showMenu}>
-                        <i className="fas fa-arrow-alt-circle-right"></i>
+                {(isSetArraySize && isSetDataType) ?
+                    <div className="showBox">
+                        <div className="canvas" ref={canvas}></div>
                     </div>
-            
-                    <div className="nav-items items1" onClick={clearSvg}>
-                        <i className="fas fa-redo"></i>
-                    </div>
-                    <div className="nav-items items2" onClick={createRect}>
-                        <i className="fas fa-plus"></i>
-                    </div>
-                    <div className="nav-items items3">
-                        <i className="fas fa-edit"></i>
-                    </div>
-                    <div className="nav-items items4">
-                        <i className="fas fa-minus"></i>
-                    </div>
-                </div> */}
-                <div className="showBox">
-                    <div className="canvas" ref={canvas}></div>
-                </div>
+                :<></>}         
             </>
-        :
-            <></>
-        }
-            
-          
+
         </div>
     )
 }

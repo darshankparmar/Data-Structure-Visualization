@@ -4,19 +4,17 @@
     padding: 11px;
     text-align: center;
 }
-
 .col-4 {
     width: 49.333333% !important;
 }
-
 input.enter-array-size, select.select-data-type {
     width: 209px;
     height: 30px;
     border: none;
     border-bottom: 0.1rem solid #0000006b;
     border-radius: 0.3rem;
+    margin: 5px;
 }
-
 .showBox {
     width: 1200px;
     height: 350px;
@@ -26,10 +24,22 @@ input.enter-array-size, select.select-data-type {
     border-left: 1px outset red;
     margin: 25px;
 }
-
+.other-operation {
+    margin: 5px;
+    width: 335px;
+    border-radius: 30px;
+    height: 50px;
+    background: white;
+    box-shadow: 0px 3px 3px rgba(0, 0, 0, 0.281);
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    z-index: 5;
+    position: relative;
+}
 .insert-operation {
-    margin: 30px;
-    width: 200px;
+    margin: 5px;
+    width: 225px;
     border-radius: 30px;
     height: 50px;
     background: white;
@@ -50,7 +60,14 @@ input.insert-value {
     outline: 0;
     width: 100px !important;
 }
-i.fas.fa-plus {
+input.operation-value, input.operation-index-value {
+    border: none;
+    border-bottom: 0.1rem solid #0000006b;
+    border-radius: 0.3rem;
+    outline: 0;
+    width: 100px !important;
+}
+i.fas.fa-plus, i.fas.fa-redo, i.fas.fa-edit {
     width: 38px;
     height: 38px;
     background: rgb(246, 54, 54);
@@ -65,7 +82,7 @@ i.fas.fa-plus {
 i.fas.fa-circle {
     top: 2px;
     position: absolute;
-    left: 163px;
+    left: 143px;
 }
 span#arraySize {
     left: 3px;
@@ -123,7 +140,9 @@ i.fas.fa-arrow-alt-circle-right {
     transform: scale(1);
     transition: transform 0.5s cubic-bezier(0.23, -0.47, 0.58, -0.63);
 }
-
+hr {
+    border: 1.5px solid rgb(150, 150, 150);
+}
 
 
 
