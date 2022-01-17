@@ -12,8 +12,9 @@ export default function Array() {
     var [arraySize, setArraySize] = useState(0);
     var [remainingArraySize, setRemainingArraySize] = useState(-1);
 
-    var [isSetArraySize, setIsSetArraySize] = useState(0);
-    var [isSetDataType, setIsSetDataType] = useState(0);
+    var [isSetArraySize, setIsSetArraySize] = useState(false);
+    var [isSetDataType, setIsSetDataType] = useState(false);
+    var [isDataTypeChar, setIsDataTypeChar] = useState(false);
 
     useEffect(() => {
         document.title = "VisualDSA ~ Array"; 
@@ -26,6 +27,11 @@ export default function Array() {
             setIsSetDataType(true);
         else
             setIsSetDataType(false);
+
+        if(dataType==2)
+            setIsDataTypeChar(true);
+        else
+            setIsDataTypeChar(false);
     }, [arraySize, dataType])
 
     // initialize canvas
@@ -137,11 +143,11 @@ export default function Array() {
     }
 
     // update array value at given index
-    var [indexForUpdate, setIndexForUpdate] = useState(null);
-    var [valueForUpdate, setValueForUpdate] = useState(null);
+    var [indexForUpdate, setIndexForUpdate] = useState(0);
+    var [valueForUpdate, setValueForUpdate] = useState(0);
 
     const updateArray = () => {
-        if(indexForUpdate >= arraySize || indexForUpdate < 0) {
+        if(parseInt(indexForUpdate) >= parseInt(arraySize) || indexForUpdate < 0) {
             alert('Please Enter Valid index');
             return;
         }
@@ -212,15 +218,19 @@ export default function Array() {
         
                 <div className="initialize-array-size col-4">
                     <label>Array Size</label>
-                    <input className="enter-array-size" type="number" min="1" placeholder=" Enter Array size" onChange={(e) => {setArraySize(e.target.value); setRemainingArraySize(e.target.value); clearSvg();} } />
+                    <input className="enter-array-size" type="number" min="1" max="99" placeholder=" Enter Array size" onChange={(e) => {setArraySize(e.target.value); setRemainingArraySize(e.target.value); clearSvg();} } />
+                    {arraySize<0 && ( <div className="error">size must be between 1 to 99</div> )}
+                    {arraySize>99 && ( <div className="error">size must be between 1 to 99</div> )}
                 </div>
             </div>
 
             <div className="operation"> 
-                {(remainingArraySize>0 && isSetDataType && isSetArraySize) ?
+                {(remainingArraySize>0 && remainingArraySize<100 && isSetDataType && isSetArraySize) ?
                     <><label>Insert Value one by one</label>
                     <div className="insert-operation">
-                        <input className="insert-value" type="number" placeholder=" Enter value" onChange={(e) => setInsertValue(e.target.value)} />
+                        {(isDataTypeChar) ? <input className="insert-value" type="text" placeholder=" Enter value" onChange={(e) => setInsertValue(e.target.value)} />  
+                        : <input className="insert-value" type="number" placeholder=" Enter value" onChange={(e) => setInsertValue(e.target.value)} /> 
+                        }
                         <div className="insert-button" onClick={createRect}>
                             <i className="fas fa-plus"></i>
                             <i className="fas fa-circle">
@@ -230,11 +240,13 @@ export default function Array() {
                         <i className="fas fa-redo" onClick={() => { clearSvg(); setRemainingArraySize(arraySize);}}></i>
                     </div></>
                 :<></>}
-                {(remainingArraySize === 0 && isSetDataType && isSetArraySize) ?
+                {(remainingArraySize == 0 && isSetDataType && isSetArraySize) ?
                     <><label>Update Value by Index</label>
                     <div className="other-operation">
                         <input className="operation-index-value" type="number" placeholder=" enter index" onChange={(e) => setIndexForUpdate(e.target.value)} />
-                        <input className="operation-value" type="number" placeholder=" enter value" onChange={(e) => setValueForUpdate(e.target.value)} />
+                        {(isDataTypeChar) ?  <input className="operation-value" type="text" placeholder=" enter value" onChange={(e) => setValueForUpdate(e.target.value)} />  
+                        : <input className="operation-value" type="number" placeholder=" enter value" onChange={(e) => setValueForUpdate(e.target.value)} />
+                        }
                         <i className="fas fa-edit" onClick={updateArray} ></i> |
                         <i className="fas fa-redo" onClick={() => { clearSvg(); setRemainingArraySize(arraySize); setInsertValue(null)}}></i>
                     </div></>

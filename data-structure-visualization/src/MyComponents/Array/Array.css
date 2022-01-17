@@ -98,7 +98,9 @@ i.fas.fa-redo:hover, i.fas.fa-edit:hover, i.fas.fa-plus:hover {
 hr {
     border: 1.5px solid rgb(150, 150, 150);
 }
-
+.error {
+    color: red;
+}
 
 
 /* For chrome, Safari, Edge, Opera : */
