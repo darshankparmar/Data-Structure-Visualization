@@ -124,8 +124,10 @@ export default function Array() {
                 .attr("x2", width+10)
                 .attr("y1", height/2)
                 .attr("y2", height/2)
+                .transition()
                 .style("stroke", "white")
-                .attr("marker-end", "url(#arrow)" );
+                .attr("marker-end", "url(#arrow)" )
+                .delay(1000).duration(1500);
         }
 
         setI(i+1);
@@ -135,7 +137,57 @@ export default function Array() {
     }
 
     // update array value at given index
+    var [indexForUpdate, setIndexForUpdate] = useState(null);
+    var [valueForUpdate, setValueForUpdate] = useState(null);
 
+    const updateArray = () => {
+        if(indexForUpdate >= arraySize || indexForUpdate < 0) {
+            alert('Please Enter Valid index');
+            return;
+        }
+        if(valueForUpdate == null || valueForUpdate === "") {
+            alert("Please Enter valid Value")
+            return;
+        }
+
+        var allGs = document.getElementsByTagName('g');
+        var indexG = allGs[indexForUpdate];
+        let value = indexG.getAttribute("transform");
+
+        var allRect = document.getElementsByTagName('rect');
+        var indexRect = allRect[indexForUpdate];
+
+        var allArrayValue = document.getElementsByClassName("array-value");
+        var indexArrayValue = allArrayValue[indexForUpdate];
+
+        d3.select(indexG).transition()
+            .ease(d3.easeLinear)
+            .delay(500).duration(1000)
+            .attr("transform", "translate(100, 220)");
+            
+        d3.select(indexRect).transition()
+            .ease(d3.easeLinear)
+            .delay(1500).duration(1000)
+            .style("stroke", "rgb(255 255 255)")
+            .style("fill", "rgb(0 19 255)");
+
+        d3.select(indexArrayValue).transition()
+            .ease(d3.easeLinear)
+            .delay(3000).duration(1000)
+            .text(valueForUpdate);
+            
+        d3.select(indexRect).transition()
+            .ease(d3.easeLinear)
+            .delay(4500).duration(1000)
+            .style("stroke", "rgb(255, 0, 0)")
+            .style("fill", "rgb(255, 255, 255)");
+        
+        d3.select(indexG).transition()
+            .ease(d3.easeLinear)
+            .delay(6000).duration(1000)
+            .attr("transform", value);
+
+    }
 
     // clear svg element
     const clearSvg = () => {
@@ -181,9 +233,9 @@ export default function Array() {
                 {(remainingArraySize === 0 && isSetDataType && isSetArraySize) ?
                     <><label>Update Value by Index</label>
                     <div className="other-operation">
-                        <input className="operation-index-value" type="number" placeholder=" enter index" />
-                        <input className="operation-value" type="number" placeholder=" enter value" />
-                        <i className="fas fa-edit"></i> |
+                        <input className="operation-index-value" type="number" placeholder=" enter index" onChange={(e) => setIndexForUpdate(e.target.value)} />
+                        <input className="operation-value" type="number" placeholder=" enter value" onChange={(e) => setValueForUpdate(e.target.value)} />
+                        <i className="fas fa-edit" onClick={updateArray} ></i> |
                         <i className="fas fa-redo" onClick={() => { clearSvg(); setRemainingArraySize(arraySize); setInsertValue(null)}}></i>
                     </div></>
                 :<></>}
