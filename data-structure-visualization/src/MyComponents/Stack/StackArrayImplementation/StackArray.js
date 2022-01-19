@@ -43,6 +43,7 @@ export default function StackArray() {
     var [top, setTop] = useState(0);
     var [k, setK] = useState(1);
 
+    // PUSH
     const pushOperation = () => {
         if(stackSize == null || stackSize === "0") {
             alert("Please enter a valid stack size");
@@ -107,8 +108,6 @@ export default function StackArray() {
                 .style("fill", "rgb(255 130 0)");
         }
         
-        
-        
         const width = 50+(5*(pushValue.length-1));
         const height = 50;
         var x = ((70*(top+1)) + (5*(prevPushValue.length-1)) + k);
@@ -163,6 +162,44 @@ export default function StackArray() {
         setPrevPushValue(pushValue);
     }
 
+    // POP
+    const popOperation = () => {
+        if(stackSize == null || stackSize === "0") {
+            alert("Please enter a valid stack size");
+            return;
+        }
+        if(top == "0") {
+            alert("Stack Underflow");
+            return;
+        }
+        var g = document.getElementsByTagName('g')[top];
+        d3.select(g).transition()
+            .ease(d3.easeLinear)
+            .delay(500).duration(700)
+            .style("opacity", "0");
+
+        d3.select(g).transition().ease(d3.easeLinear).delay(1200).duration(500).remove();
+
+        var topIndex = document.getElementsByClassName("top-index")[0];
+        d3.select(topIndex).transition()
+            .ease(d3.easeLinear)
+            .delay(500).duration(1000)
+            .text(top-2);
+
+        var topRect = document.getElementsByTagName("rect")[0];
+        d3.select(topRect).transition()
+            .ease(d3.easeLinear)
+            .delay(500).duration(500)
+            .style("fill", "blue");
+
+        d3.select(topRect).transition()
+            .ease(d3.easeLinear)
+            .delay(1000).duration(500)
+            .style("fill", "rgb(255 130 0)");
+        
+        setTop(top-1);
+    }
+
     // clear svg element
     const clearSvg = () => {
         d3.selectAll("svg").remove();
@@ -193,7 +230,7 @@ export default function StackArray() {
                     </div>
                     <div className="pop-operation">
                         <label>Pop:</label>
-                        <i className="fas fa-arrow-right"></i>
+                        <i className="fas fa-arrow-right" onClick={popOperation}></i>
                     </div>
                     <div className="clear-operation">
                         <label>Clear Stack:</label>
@@ -206,8 +243,6 @@ export default function StackArray() {
             <div className="showBoxForStackArray">
                 <div className="stackArrayCanvas" ref={stackArrayCanvas}></div>
             </div>
-
-
         </div>
     )
 }
