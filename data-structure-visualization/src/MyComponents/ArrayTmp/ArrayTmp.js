@@ -157,6 +157,7 @@ export default function ArrayTmp() {
 
     return (
         <div className="array">
+            
 
             {/* <svg width="600px" height="100px">
             <defs>

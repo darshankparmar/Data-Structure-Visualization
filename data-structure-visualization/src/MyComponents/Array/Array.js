@@ -204,10 +204,12 @@ export default function Array() {
     return (
         <div className="array">
 
-            <hr />
-            <h1 className="display-4 font-weight-bold">Array</h1>
-            <hr />
-
+            <div className="title">
+                <hr />
+                <h2 className="font-weight-bold">Array</h2>
+                <hr />
+            </div>
+            
             <div className="initialize-array row"> 
                 <div className="initialize-array-data-type col-4">
                     <label>Array Data Type</label>
@@ -218,8 +220,8 @@ export default function Array() {
         
                 <div className="initialize-array-size col-4">
                     <label>Array Size</label>
-                    <input className="enter-array-size" type="number" min="1" max="99" placeholder=" Enter Array size" onChange={(e) => {setArraySize(e.target.value); setRemainingArraySize(e.target.value); clearSvg();} } />
-                    {arraySize<0 && ( <div className="error">size must be between 1 to 99</div> )}
+                    <input className="enter-array-size" type="number" min="1" max="99" pattern="[0-9]*" placeholder=" Enter Array size" onChange={(e) => {let value = e.target.value; value = value.replace(/\D/, ''); setArraySize(value); setRemainingArraySize(value); clearSvg();} } />
+                    {arraySize<1 && ( <div className="error">size must be between 1 to 99</div> )}
                     {arraySize>99 && ( <div className="error">size must be between 1 to 99</div> )}
                 </div>
             </div>
@@ -228,7 +230,7 @@ export default function Array() {
                 {(remainingArraySize>0 && remainingArraySize<100 && isSetDataType && isSetArraySize) ?
                     <><label>Insert Value one by one</label>
                     <div className="insert-operation">
-                        {(isDataTypeChar) ? <input className="insert-value" type="text" placeholder=" Enter value" onChange={(e) => setInsertValue(e.target.value)} />  
+                        {(isDataTypeChar) ? <input className="insert-value" type="text" minlength="1" maxlength="1" pattern="[A-Za-z]" placeholder=" Enter value" onChange={(e) => {let value = e.target.value; value = value.replace(/[^A-Za-z]/ig, ''); setInsertValue(value)}} />  
                         : <input className="insert-value" type="number" placeholder=" Enter value" onChange={(e) => setInsertValue(e.target.value)} /> 
                         }
                         <div className="insert-button" onClick={createRect}>
@@ -244,7 +246,7 @@ export default function Array() {
                     <><label>Update Value by Index</label>
                     <div className="other-operation">
                         <input className="operation-index-value" type="number" placeholder=" enter index" onChange={(e) => setIndexForUpdate(e.target.value)} />
-                        {(isDataTypeChar) ?  <input className="operation-value" type="text" placeholder=" enter value" onChange={(e) => setValueForUpdate(e.target.value)} />  
+                        {(isDataTypeChar) ?  <input className="operation-value" type="text" minlength="1" maxlength="1" placeholder=" enter value" onChange={(e) => { let value = e.target.value; value = value.replace(/[^A-Za-z]/ig, ''); setValueForUpdate(value)} }/>  
                         : <input className="operation-value" type="number" placeholder=" enter value" onChange={(e) => setValueForUpdate(e.target.value)} />
                         }
                         <i className="fas fa-edit" onClick={updateArray} ></i> |

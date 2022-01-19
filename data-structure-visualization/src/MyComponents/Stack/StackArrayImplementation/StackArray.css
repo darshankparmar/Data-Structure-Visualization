@@ -1,0 +1,57 @@
+.title { 
+    text-align: center;
+    padding: 11px;
+}
+.initialize-stack-size {
+    margin: 5px;
+    width: 277px;
+    border-radius: 30px;
+    height: 50px;
+    background: #363636;
+    box-shadow: 4px 4px 4px rgb(255 0 0 / 28%);
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    z-index: 5;
+    position: relative;
+}
+input.enter-stack-size {
+    width: 90px;
+    height: 30px;
+    border: none;
+    border-bottom: 0.1rem solid #0000006b;
+    border-radius: 0.3rem;
+    outline: 0;
+}
+::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+    color: rgb(92, 86, 86);
+    opacity: 1; /* Firefox */
+}
+label {
+    color: white;
+}
+.stack-operation {
+    display: flex;
+    justify-content: center;
+}
+.push-operation, .pop-operation, .clear-opration {
+    margin: 5px;
+    width: 170px;
+    border-radius: 30px;
+    height: 50px;
+    background: #363636;
+    box-shadow: 4px 4px 4px rgb(255 0 0 / 28%);
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    z-index: 5;
+    position: relative;
+}
+input.enter-push-value, input.enter-pop-value {
+    width: 90px;
+    height: 30px;
+    border: none;
+    border-bottom: 0.1rem solid #0000006b;
+    border-radius: 0.3rem;
+    outline: 0;
+}

@@ -8,7 +8,7 @@ export default function Dashboard() {
 
     return (
         <> 
-            <main>
+            <div className="dashboard">
                 <div className="pt-table desktop-768">
                     <div className="pt-tablecell page-home relative">
                                     
@@ -172,7 +172,7 @@ export default function Dashboard() {
 
                     </div>
                 </div>
-            </main>
+            </div>
         </>
     )
 }
