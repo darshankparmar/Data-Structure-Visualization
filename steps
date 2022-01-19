@@ -1,7 +1,0 @@
-npx create-react-app data-structure-visualization
-
-npm install --save d3
-
-npm i jquery --save
-
-npm install --save bootstrap
