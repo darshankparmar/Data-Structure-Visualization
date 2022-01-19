@@ -67,7 +67,7 @@ input.operation-value, input.operation-index-value {
     outline: 0;
     width: 100px !important;
 }
-i.fas.fa-plus, i.fas.fa-redo, i.fas.fa-edit {
+i.fas.fa-plus, i.fas.fa-redo, i.fas.fa-edit, i.fas.fa-arrow-right {
     width: 38px;
     height: 38px;
     background: rgb(246, 54, 54);
@@ -91,7 +91,7 @@ span#arraySize {
     font-size: x-small;
     color: black;
 }
-i.fas.fa-redo:hover, i.fas.fa-edit:hover, i.fas.fa-plus:hover {
+i.fas.fa-redo:hover, i.fas.fa-edit:hover, i.fas.fa-plus:hover, i.fas.fa-arrow-right:hover {
     transform: scale(1.1);
     transition-timing-function: 0.1s;
 }

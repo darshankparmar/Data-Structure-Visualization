@@ -5,7 +5,7 @@ body {
   font-size: 16px !important;
   line-height: 30px !important;
   background-color: #0c0f15 !important;
-  overflow-x:hidden !important;
+  /* overflow-x:scroll !important; */
   color: #ababab !important; 
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;

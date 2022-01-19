@@ -1,3 +1,7 @@
+.stack-array-implementation {
+    justify-content: center;
+    display: grid;
+}
 .title { 
     text-align: center;
     padding: 11px;
@@ -34,9 +38,18 @@ label {
     display: flex;
     justify-content: center;
 }
-.push-operation, .pop-operation, .clear-opration {
+.push-operation {
+    width: 190px;
+}
+.pop-operation {
+    width: 110px;
+}
+.clear-operation {
+    width: 155px;
+}
+.push-operation, .pop-operation, .clear-operation {
     margin: 5px;
-    width: 170px;
+    /* width: 175px; */
     border-radius: 30px;
     height: 50px;
     background: #363636;
@@ -48,10 +61,31 @@ label {
     position: relative;
 }
 input.enter-push-value, input.enter-pop-value {
-    width: 90px;
+    width: 70px;
     height: 30px;
     border: none;
     border-bottom: 0.1rem solid #0000006b;
     border-radius: 0.3rem;
     outline: 0;
+}
+.showBoxForStackArray {
+    width: 1200px;
+    height: 500px;
+    overflow: scroll;
+    border-top: 1px outset red;
+    border-left: 1px outset red;
+    margin: 25px;
+
+}
+i.fas.fa-arrow-right {
+    width: 38px;
+    height: 38px;
+    background: rgb(246, 54, 54);
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    box-shadow: 2px 2px 3px rgb(0 0 0 / 21%);
 }

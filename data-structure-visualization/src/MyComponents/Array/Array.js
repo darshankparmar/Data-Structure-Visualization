@@ -65,7 +65,7 @@ export default function Array() {
 
     // insert value in array and create rect element
     var [i, setI] = useState(1);
-    var [k, setK] = useState(1);
+    
     var [insertValue, setInsertValue] = useState(null);
     var [prevInsertedValue, setPrevInsertedValue] = useState(parseInt("1"));
 
