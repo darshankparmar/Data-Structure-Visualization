@@ -1,14 +1,18 @@
-import React from 'react';
-import './Dashboard.css';
+import React, { useEffect } from 'react';
+import './DataStructures.css';
 import { Link } from 'react-router-dom';
 
-export default function Dashboard() {
+export default function DataStructures() {
 
     document.title = "VisualDSA";
 
+    useEffect(() => {
+        window.scrollTo(0, 0);
+    }, []);
+
     return (
         <> 
-            <div className="dashboard">
+            <div className="dataStructures">
                 <div className="pt-table desktop-768">
                     <div className="pt-tablecell page-home relative">
                                     

@@ -5,6 +5,8 @@ import * as d3 from 'd3';
 
 export default function Array() {
 
+    document.title = "VisualDSA ~ Array";
+
     const canvas = useRef(null);
     const dataTypeList = ["Select Array Data Type", "int", "char", "long" , "double", "long double"];
 

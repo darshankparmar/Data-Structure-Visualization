@@ -1,0 +1,29 @@
+.home {
+    display: grid;
+}
+.introduction-dsa {
+    /* position: absolute; */
+    width: 100%;
+}
+div#particles {
+    position: absolute;
+    border-bottom: 1px outset #c2c2c2;
+}
+.card.datastructure, .card.algorithm {
+    color: black;
+    background-color: #c0c0c0;
+    border: 1px solid rgb(255 0 0);
+    border-radius: 0.5rem;
+}
+.card.datastructure:hover, .card.algorithm:hover {
+    box-shadow: 1px 6px 25px 1px red;
+}
+rect {
+    fill: none;
+    pointer-events: all;
+}
+circle {
+    fill: none;
+    stroke-width: 2.5px;
+}
+

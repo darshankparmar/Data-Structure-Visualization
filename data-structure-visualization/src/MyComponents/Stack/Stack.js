@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 
 export default function Stack() {
@@ -6,6 +6,12 @@ export default function Stack() {
         justifyContent: "center",
         display: "flex"
     };
+
+    document.title = "VisualDSA ~ Stack";
+
+    useEffect(() => {
+        window.scrollTo(0, 0);
+    }, []);
 
     return (
         <div className="stack">

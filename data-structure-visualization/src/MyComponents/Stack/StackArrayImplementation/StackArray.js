@@ -4,6 +4,8 @@ import * as d3 from 'd3';
 
 export default function StackArray() {
 
+    document.title = "VisualDSA ~ Stack using Array";
+
     const stackArrayCanvas = useRef(null);
 
     // initialize canvas

@@ -5,7 +5,7 @@ import './Header.css'
 export default function Header() {
     return (
         <>
-            <nav className="navbar navbar-expand-lg navbar-red navbar-dark">
+            <nav className="navbar navbar-expand-lg navbar-red navbar-dark sticky-top">
                 <div className="wrapper"> </div>
                 <div className="container-fluid all-show"> <Link className="navbar-brand" to='/'>VisualDSA <i className="fas fa-code-branch"></i></Link> <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"> <span className="navbar-toggler-icon"></span> </button>
                     <div className="collapse navbar-collapse" id="navbarSupportedContent">
