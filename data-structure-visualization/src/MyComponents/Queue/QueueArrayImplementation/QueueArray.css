@@ -1,0 +1,65 @@
+.queue-array-implementation {
+    justify-content: center;
+    display: grid;
+}
+.initialize-queue-size {
+    margin: 5px;
+    width: 277px;
+    border-radius: 30px;
+    height: 50px;
+    background: #363636;
+    box-shadow: 4px 4px 4px rgb(255 0 0 / 28%);
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    z-index: 5;
+    position: relative;
+}
+input.enter-queue-size {
+    width: 90px;
+    height: 30px;
+    border: none;
+    border-bottom: 0.1rem solid #0000006b;
+    border-radius: 0.3rem;
+    outline: 0;
+}
+.queue-operation {
+    display: flex;
+    justify-content: center;
+}
+.enqueue-operation {
+    width: 190px;
+}
+.dequeue-operation {
+    width: 110px;
+}
+.enqueue-operation, .dequeue-operation, .clear-operation {
+    margin: 5px;
+    /* width: 175px; */
+    border-radius: 30px;
+    height: 50px;
+    background: #363636;
+    box-shadow: 4px 4px 4px rgb(255 0 0 / 28%);
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    z-index: 5;
+    position: relative;
+}
+input.enter-enqueue-value {
+    width: 70px;
+    height: 30px;
+    border: none;
+    border-bottom: 0.1rem solid #0000006b;
+    border-radius: 0.3rem;
+    outline: 0;
+}
+.showBoxForQueueArray {
+    width: 1200px;
+    height: 500px;
+    overflow: scroll;
+    border-top: 1px outset red;
+    border-left: 1px outset red;
+    margin: 25px;
+
+}

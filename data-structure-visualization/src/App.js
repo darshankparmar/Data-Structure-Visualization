@@ -8,6 +8,8 @@ import DataStructures from './MyComponents/DataStructures/DataStructures';
 import Array from './MyComponents/Array/Array';
 import Stack from './MyComponents/Stack/Stack';
 import StackArray from './MyComponents/Stack/StackArrayImplementation/StackArray';
+import Queue from './MyComponents/Queue/Queue';
+import QueueArray from './MyComponents/Queue/QueueArrayImplementation/QueueArray';
 import ArrayTmp from './MyComponents/ArrayTmp/ArrayTmp';
 
 function App() {
@@ -23,6 +25,9 @@ function App() {
           <Route exact path="/stack" element={<Stack />}></Route>
           <Route exact path="/stack/stackArray" element={<StackArray />}></Route>
           <Route exact path="/stack/stackLL" element={<Stack />}></Route>
+          <Route exact path="/queue" element={<Queue />}></Route>
+          <Route exact path="/queue/queueArray" element={<QueueArray />}></Route>
+          <Route exact path="/queue/queueLL" element={<Queue />}></Route>
           <Route exact path="/advanced-dsa" element={<ArrayTmp />}></Route>
         </Routes>
       </BrowserRouter>

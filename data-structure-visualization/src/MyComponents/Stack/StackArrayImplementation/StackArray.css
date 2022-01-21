@@ -60,7 +60,7 @@ label {
     z-index: 5;
     position: relative;
 }
-input.enter-push-value, input.enter-pop-value {
+input.enter-push-value {
     width: 70px;
     height: 30px;
     border: none;
