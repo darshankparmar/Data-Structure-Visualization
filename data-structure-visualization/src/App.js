@@ -11,6 +11,7 @@ import StackArray from './MyComponents/Stack/StackArrayImplementation/StackArray
 import Queue from './MyComponents/Queue/Queue';
 import QueueArray from './MyComponents/Queue/QueueArrayImplementation/QueueArray';
 import ArrayTmp from './MyComponents/ArrayTmp/ArrayTmp';
+import LinkedList from './MyComponents/LinkedList/LinkedList';
 
 function App() {
 
@@ -29,6 +30,8 @@ function App() {
           <Route exact path="/queue/queueArray" element={<QueueArray />}></Route>
           <Route exact path="/queue/queueLL" element={<Queue />}></Route>
           <Route exact path="/advanced-dsa" element={<ArrayTmp />}></Route>
+          <Route exact path="/linked-list" element={<LinkedList />}></Route>
+
         </Routes>
       </BrowserRouter>
     </>
