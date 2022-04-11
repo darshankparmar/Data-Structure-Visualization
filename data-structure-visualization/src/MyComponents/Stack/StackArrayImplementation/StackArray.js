@@ -145,7 +145,9 @@ export default function StackArray() {
             .attr("class", "array-value")
             .attr("dx", 20)
             .attr("dy", 30)
-            .text(pushValue);
+            .transition()
+            .text(pushValue)
+            .delay(1000).duration(1000);
 
         if(top != (stackSize-1)) {
             g.append("line")

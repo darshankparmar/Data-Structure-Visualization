@@ -179,7 +179,9 @@ export default function QueueArray() {
             .attr("class", "array-value")
             .attr("dx", 20)
             .attr("dy", 30)
-            .text(enqueueValue);
+            .transition()
+            .text(enqueueValue)
+            .delay(1000).duration(1000);
 
         g.append("line")
             .attr("x1", width)

@@ -158,15 +158,15 @@ export default function Array() {
             return;
         }
 
-        var allGs = document.getElementsByTagName('g'); // jetla g tag hoy e badha lai leeyyy
-        var indexG = allGs[indexForUpdate]; // kyo index levo chhe e SeLeCt KARvAnO 
-        let value = indexG.getAttribute("transform"); // e index no 
+        var allGs = document.getElementsByTagName('g');
+        var indexG = allGs[indexForUpdate];
+        let value = indexG.getAttribute("transform");
 
         var allRect = document.getElementsByTagName('rect');
-        var indexRect = allRect[indexForUpdate]; 
+        var indexRect = allRect[indexForUpdate];
 
         var allArrayValue = document.getElementsByClassName("array-value");
-        var indexArrayValue = allArrayValue[indexForUpdate]; 
+        var indexArrayValue = allArrayValue[indexForUpdate];
 
         d3.select(indexG).transition()
             .ease(d3.easeLinear)

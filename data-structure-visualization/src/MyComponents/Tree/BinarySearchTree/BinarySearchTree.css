@@ -1,0 +1,52 @@
+.BST-insert-operation, .BST-delete-operation, .BST-clear-operation {
+    margin: 5px;
+    width: 255px;
+    border-radius: 30px;
+    height: 50px;
+    background: #363636;
+    box-shadow: 4px 4px 4px rgb(255 0 0 / 28%);
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    z-index: 5;
+    position: relative;
+}
+.BST-clear-operation {
+    width: 155px !important;
+}
+input.BST-insert-value, input.BST-delete-value {
+    width: 90px;
+    height: 30px;
+    border: none;
+    border-bottom: 0.1rem solid #0000006b;
+    border-radius: 0.3rem;
+    outline: 0;
+}
+label.BST-operation-title {
+    font-size: 18px;
+    margin: 0 7px 0 0;
+    background-color: #dc3545;
+    border-color: #dc3545;
+    border-radius: 10%;
+    padding: inherit;
+}
+.showBoxForBST {
+    width: 1200px;
+    height: 500px;
+    overflow: scroll;
+    border-top: 1px outset red;
+    border-left: 1px outset red;
+    margin: 40px;
+}
+
+.node circle {
+    fill: red !important;
+    stroke: #0c0f15;
+    stroke-width: 3px;
+}
+  
+.link {
+    fill: none;
+    stroke: #ccc;
+    stroke-width: 2px;
+}
