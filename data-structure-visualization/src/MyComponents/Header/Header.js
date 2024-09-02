@@ -16,11 +16,11 @@ export default function Header() {
                         </ul> 
                         <div className="d-flex flex-column sim">                             
                             <div className="media d-flex align-items-center">
-                                <div className="mr-3 rounded-circle img-thumbnail shadow-sm">
-                                    <i className="fab fa-3x fa-user"></i>
+                                <div className="mr-3">
+                                    <i className="fa fa-2x fa-user" aria-hidden="true"></i>
                                 </div>
                                 <div className="media-body">
-                                    <h5 className="m-0">dkp</h5>   
+                                    <h5 className="m-0">Darshan Parmar</h5>   
                                 </div>
                             </div>
                         </div>
